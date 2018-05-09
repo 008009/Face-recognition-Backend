@@ -19,7 +19,6 @@ const db = knex({
     	database : 'smart-brain'
   	}
 });
-
 const app = express();
 // middware
 app.use(bodyParser.json());
@@ -47,6 +46,7 @@ app.post('/imageUrl', (req, res)=> {imageUrl.imageUrlHandler(req, res)})
 app.listen(process.env.PORT || 3000, ()=>{
 	console.log(`app is running on ${process.env.PORT}`);
 });
+
 // app.listen(3000, ()=>{
 // 	console.log(`app is running on 3000`);
 // });
