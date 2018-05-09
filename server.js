@@ -13,10 +13,8 @@ const imageUrl = require('./controller/imageUrl')
 const db = knex({
 	client: 'pg',
   	connection: {
-    	host : 'postgresql-vertical-11663',
-    	user : 'carl0809',
-    	password : '',
-    	database : 'smart-brain'
+  		connectionString: process.env.DATABASE_URL,
+  		ssl: true,
   	}
 });
 const app = express();
