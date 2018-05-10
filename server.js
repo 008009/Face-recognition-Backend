@@ -13,8 +13,10 @@ const imageUrl = require('./controller/imageUrl')
 const db = knex({
 	client: 'pg',
   	connection: {
-  		connectionString: process.env.DATABASE_URL,
-  		ssl: true,
+    	host : '127.0.0.1',
+    	user : 'carl0809',
+    	password : '',
+    	database : 'smart-brain'
   	}
 });
 const app = express();
@@ -23,7 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res)=>{
-	res.send('it is working');
+	 res.send(database.users);
 })
 
 // signin --> POST = success/fail
@@ -41,10 +43,10 @@ app.put('/image', (req, res)=> {image.imageHandler(req, res, db)})
 //imageUrl --> GET --> handle API call
 app.post('/imageUrl', (req, res)=> {imageUrl.imageUrlHandler(req, res)})
 
-app.listen(process.env.PORT || 3000, ()=>{
-	console.log(`app is running on ${process.env.PORT}`);
-});
-
-// app.listen(3000, ()=>{
-// 	console.log(`app is running on 3000`);
+// app.listen(process.env.PORT || 3000, ()=>{
+// 	console.log(`app is running on ${process.env.PORT}`);
 // });
+
+app.listen(3000, ()=>{
+	console.log(`app is running on 3000`);
+});
